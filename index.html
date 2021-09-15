@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <section class="hero is-small is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <p class="title">Page</p>
+          <p class="subtitle">Something</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <form name="addBook">
+          <div class="field">
+            <label class="label">Image URL : </label>
+            <div class="control">
+              <input
+                class="input"
+                type="url"
+                placeholder="example.com"
+                id="image"
+                name="image"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Price : </label>
+            <div class="control">
+              <input
+                class="input"
+                type="number"
+                placeholder="Price"
+                id="price"
+                name="price"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">City : </label>
+            <div class="select">
+              <select name="city" id="city">
+                <option value="vilnius">Vilnius</option>
+                <option value="kaunas">Kaunas</option>
+                <option value="klaipeda">Klaipeda</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button type="submit" class="button is-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container" >
+        <div class="columns is-multiline" id="properties">
+          <div class="column is-one-quarter">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img
+                    src="https://bulma.io/images/placeholders/1280x960.png"
+                    alt="Placeholder image"
+                  />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4">John Smith</p>
+                    <p class="subtitle is-6">@johnsmith</p>
+                  </div>
+                </div>
+
+                <div class="content">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Soluta aliquid nihil in consequuntur labore repudiandae
+                  expedita, architecto, amet perspiciatis a necessitatibus
+                  aperiam at repellendus saepe libero, mollitia dicta! Impedit,
+                  vitae!
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.forms.addBook.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const image = document.getElementById("image").value;
+        const price = document.getElementById("price").value;
+        const city = document.getElementById("city").value;
+
+        console.log(image,price,city);
+        
+      });
+
+      createBlock({
+          image: 
+          "https://image.ceneostatic.pl/data/products/106861074/i-moto-guzzi.jpg",
+      });
+
+      function createBlock(item){
+          const block = document.createElement('div');
+          block.classList.add("column", "is-one-quarter");
+
+          const card = document.createElement('card');
+          card.classList.add("card");
+
+          const imageBlock = document.createElement('div');
+          imageBlock.classList.add('card-image');
+
+          const imageFigure = document.createElement('figure');
+          imageFigure.classList.add("image","is-4by3");
+
+          const image = document.createElement('img');
+          image.src = item.image;
+
+          imageFigure.append(image);
+          imageBlock.append(imageFigure);
+          card.append(imageBlock);
+          block.append(card);
+
+          
+        document.getElementById('properties').append(block)
+
+      }
+    </script>
+  </body>
+</html>
